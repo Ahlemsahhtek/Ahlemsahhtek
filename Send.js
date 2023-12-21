@@ -3,10 +3,10 @@ function sendEmail() {
   var subject = 'Hello from Mailgun';
   var message = 'Hello, this is a test email from Mailgun!';
 
-  fetch('https://api.mailgun.net/v3/YOUR_MAILGUN_DOMAIN/messages', {
+  fetch('https://api.mailgun.net/v3/sandboxd15237a2f3d54abf91ddcf71f5c79f08.mailgun.org/messages', {
     method: 'POST',
     headers: {
-      'Authorization': 'Basic ' + btoa('api:YOUR_MAILGUN_API_KEY'),
+      'Authorization': 'Basic ' + btoa('api:1bae9d652ff3e59ed89b68ca86637f83-5e3f36f5-9ddee746'),
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: 'from=YourEmail@example.com&to=' + recipient + '&subject=' + subject + '&text=' + message
