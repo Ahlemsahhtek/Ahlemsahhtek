@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
   <title>Mailgun Email Sender</title>
 </head>
 <body>
   <label for="recipient">Recipient Email:</label>
-  <input type="text" id="recipient" value="Atefhajbrahim90@gmail.com"><br><br>
+  <input type="text" id="recipient" value="Wided.mee@gmail.com"><br><br>
   
   <label for="subject">Subject:</label>
-  <input type="text" id="subject"><br><br>
+  <input type="text" id="subject" value="مرحبا"><br><br>
   
   <label for="message">Message:</label><br>
-  <textarea id="message" rows="4" cols="50"></textarea><br><br>
+  <textarea id="message" rows="4" cols="50">أدخل نص الرسالة هنا</textarea><br><br>
   
   <button onclick="sendEmail()">Send Email</button>
 
   <script>
     function sendEmail() {
-      var recipient = document.getElementById('recipient').value || 'Atefhajbrahim90@gmail.com'; // تعيين قيمة افتراضية للمستلم
+      var recipient = document.getElementById('recipient').value || 'Wided.mee@gmail.com';
       var subject = document.getElementById('subject').value;
-      var message = document.getElementById('message').value;
+      var message = document.getElementById('message').value || 'لا توجد رسالة';
 
-      fetch('https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages', {
+      fetch('https://api.mailgun.net/v3/sandboxd15237a2f3d54abf91ddcf71f5c79f08.mailgun.org/messages', {
         method: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa('api:950ca6cf0a243d855695cd22ecf48d82-5e3f36f5-b4f3c483'),
+          'Authorization': 'Basic ' + btoa('api:key-950ca6cf0a243d855695cd22ecf48d82'),
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: 'from=you@yourdomain.com&to=' + recipient + '&subject=' + subject + '&text=' + message
+        body: 'from=Ahlem.sahtk6@gmail.com&to=' + recipient + '&subject=' + subject + '&text=' + message
       })
       .then(response => {
         console.log(response);
