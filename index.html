@@ -1,4 +1,4 @@
-!DOCTYPE html>
+    !DOCTYPE html>
 <html>
 <head>
   <title>نموذج التسجيل</title>
@@ -36,17 +36,17 @@
       color: #333;
     }
 
-    input[type="text"] {
-      width: calc(100% - 16px);
+    input[type="text"], input[type="submit"] {
+      width: 100%; /* تعديل عرض الحقول ليمتلئ الشاشة */
+      height: 50px; /* تعديل ارتفاع الحقول */
       padding: 8px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box; /* تأكيد عدم إضافة حجم الحواف إلى العرض والارتفاع */
     }
 
     input[type="submit"] {
-      width: calc(100% - 16px);
-      padding: 8px;
       background-color: #4CAF50;
       color: white;
       border: none;
