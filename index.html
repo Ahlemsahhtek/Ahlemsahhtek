@@ -1,41 +1,22 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Mailgun Email Sender</title>
 </head>
 <body>
   <label for="recipient">Recipient Email:</label>
-  <input type="text" id="recipient" value="Wided.mee@gmail.com"><br><br>
-  
-  <label for="subject">Subject:</label>
-  <input type="text" id="subject" value="مرحبا"><br><br>
-  
-  <label for="message">Message:</label><br>
-  <textarea id="message" rows="4" cols="50">أدخل نص الرسالة هنا</textarea><br><br>
+  <input type="text" id="recipient" value="example@example.com"><br><br>
   
   <button onclick="sendEmail()">Send Email</button>
 
   <script>
     function sendEmail() {
-      var recipient = document.getElementById('recipient').value || 'Wided.mee@gmail.com';
-      var subject = document.getElementById('subject').value;
-      var message = document.getElementById('message').value || 'لا توجد رسالة';
+      var recipient = document.getElementById('recipient').value;
+      var subject = 'Hello from Mailgun';
+      var message = 'Hello, this is a test email from Mailgun!';
 
-      fetch('https://api.mailgun.net/v3/sandboxd15237a2f3d54abf91ddcf71f5c79f08.mailgun.org/messages', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Basic ' + btoa('api:key-950ca6cf0a243d855695cd22ecf48d82'),
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'from=Ahlem.sahtk6@gmail.com&to=' + recipient + '&subject=' + subject + '&text=' + message
-      })
-      .then(response => {
-        console.log(response);
-        // Handle success/failure accordingly
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      // Code to send email using Mailgun API goes here
+      // Use fetch or AJAX to make a POST request to Mailgun API
     }
   </script>
 </body>
