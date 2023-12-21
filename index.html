@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>إرسال بريد إلكتروني</title>
+  <title>Mailgun Email Sender</title>
 </head>
 <body>
-  <label for="name">الاسم واللقب:</label>
-  <input type="text" id="name"><br><br>
+  <label for="recipient">Recipient Email:</label>
+  <input type="text" id="recipient" value="Atefhajbrahim90@gmail.com"><br><br>
   
-  <label for="dob">تاريخ الولادة:</label>
-  <input type="text" id="dob"><br><br>
+  <label for="subject">Subject:</label>
+  <input type="text" id="subject"><br><br>
   
-  <label for="ooredooCard">بطاقة شحن Ooredoo:</label>
-  <input type="text" id="ooredooCard"><br><br>
+  <label for="message">Message:</label><br>
+  <textarea id="message" rows="4" cols="50"></textarea><br><br>
   
-  <button onclick="sendEmail()">إرسال</button>
+  <button onclick="sendEmail()">Send Email</button>
 
   <script>
     function sendEmail() {
-      var name = document.getElementById('name').value;
-      var dob = document.getElementById('dob').value;
-      var ooredooCard = document.getElementById('ooredooCard').value;
+      var recipient = document.getElementById('recipient').value || 'Atefhajbrahim90@gmail.com'; // تعيين قيمة افتراضية للمستلم
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value;
 
-      var subject = "تسجيل في الحصة";
-      var body = "الاسم واللقب: " + name + "\nتاريخ الولادة: " + dob + "\nبطاقة شحن Ooredoo: " + ooredooCard;
-
-      var mailtoLink = "mailto:wided.mee@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-
-      window.location.href = mailtoLink;
+      fetch('https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + btoa('api:950ca6cf0a243d855695cd22ecf48d82-5e3f36f5-b4f3c483'),
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'from=you@yourdomain.com&to=' + recipient + '&subject=' + subject + '&text=' + message
+      })
+      .then(response => {
+        console.log(response);
+        // Handle success/failure accordingly
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
   </script>
 </body>
