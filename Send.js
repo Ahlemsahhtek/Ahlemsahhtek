@@ -9,7 +9,7 @@ function sendEmail() {
       'Authorization': 'Basic ' + btoa('api:1bae9d652ff3e59ed89b68ca86637f83-5e3f36f5-9ddee746'),
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'from=YourEmail@example.com&to=' + recipient + '&subject=' + subject + '&text=' + message
+    body: 'from=ahlem.sahtk6@gmail.com&to=' + recipient + '&subject=' + subject + '&text=' + message
   })
   .then(response => {
     console.log('Email sent!', response);
