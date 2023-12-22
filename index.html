@@ -7,12 +7,65 @@
       background-image: url('رابط الصورة');
       background-size: cover;
       background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-    #progressBar {
+
+    progress.percentage {
       width: 100%;
       height: 30px;
-      background-color: lightblue;
       margin-bottom: 20px;
+    }
+
+    progress.steps {
+      width: 100%;
+      height: 20px;
+      margin-bottom: 20px;
+    }
+
+    progress::-webkit-progress-bar {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+    }
+
+    progress::-webkit-progress-value {
+      background-color: #4caf50;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    input[type="button"] {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
     }
   </style>
 </head>
@@ -20,49 +73,54 @@
 
 <h2>اختبار الإكتئاب</h2>
 <form id="depressionForm">
-  <p>1. هل تشعر بالحزن بشكل متكرر؟<br>
-    <input type="radio" name="q1" value="10"> نعم
-    <input type="radio" name="q1" value="0"> لا
+    <p>1. هل تشعر بالحزن بشكل متكرر؟<br>
+    <input type="radio" name="q1" value="0"> نعم
+    <input type="radio" name="q1" value="6"> لا
   </p>
   <p>2. هل تفقد الاهتمام بالأنشطة التي كنت تستمتع بها؟<br>
     <input type="radio" name="q2" value="0"> نعم
-    <input type="radio" name="q2" value="10"> لا
+    <input type="radio" name="q2" value="6"> لا
   </p>
   <p>3. هل تشعر بالإرهاق أو فقدان الطاقة بشكل مستمر؟<br>
     <input type="radio" name="q3" value="0"> نعم
-    <input type="radio" name="q3" value="10"> لا
+    <input type="radio" name="q3" value="7"> لا
   </p>
   <p>4. هل تعاني من اضطراب في النوم؟<br>
     <input type="radio" name="q4" value="0"> نعم
-    <input type="radio" name="q4" value="10"> لا
+    <input type="radio" name="q4" value="9"> لا
   </p>
   <p>5. هل تشعر بالذنب أو القلق دومًا؟<br>
     <input type="radio" name="q5" value="0"> نعم
-    <input type="radio" name="q5" value="10"> لا
+    <input type="radio" name="q5" value="7"> لا
   </p>
   <p>6. هل صارت الأمور التي كانت سابقًا ممتعة بالنسبة لك بلا طعم؟<br>
     <input type="radio" name="q6" value="0"> نعم
-    <input type="radio" name="q6" value="10"> لا
+    <input type="radio" name="q6" value="17"> لا
   </p>
   <p>7. هل تعاني من تقلبات في المزاج بشكل كبير؟<br>
     <input type="radio" name="q7" value="0"> نعم
-    <input type="radio" name="q7" value="10"> لا
+    <input type="radio" name="q7" value="14"> لا
   </p>
   <p>8. هل لديك صعوبة في التركيز أو اتخاذ القرارات؟<br>
     <input type="radio" name="q8" value="0"> نعم
-    <input type="radio" name="q8" value="10"> لا
+    <input type="radio" name="q8" value="4"> لا
   </p>
   <p>9. هل تفكر في الانتحار أو لديك أفكار سلبية حول الحياة؟<br>
     <input type="radio" name="q9" value="0"> نعم
-    <input type="radio" name="q9" value="10"> لا
+    <input type="radio" name="q9" value="20"> لا
   </p>
   <p>10. هل تشعر بالاضطراب أو القلق الشديد بشكل مستمر؟<br>
     <input type="radio" name="q10" value="0"> نعم
     <input type="radio" name="q10" value="10"> لا
   </p>
   
-  <!-- progress bar -->
-  <div id="progressBar"></div>
+  </p>
+  
+  <!-- progress bar للنسبة -->
+  <progress class="percentage" title="Loading..." max="100" value="1"></progress>
+
+  <!-- progress bar للخطوات -->
+  <progress class="steps" title="Work in progress..." max="100" value="80"></progress>
 
   <!-- زر لحساب النتيجة -->
   <input type="button" value="تحليل النتائج" onclick="calculateResult()">
@@ -91,8 +149,11 @@ function calculateResult() {
 
   document.getElementById('result').innerHTML = 'نسبة الإكتئاب الخاصة بك هي: ' + percentage + '%';
 
-  // تحديث ال progress bar
-  document.getElementById('progressBar').style.width = percentage + '%';
+  // تحديث progress bar النسبة
+  document.querySelector('.percentage').value = percentage;
+
+  // تحديث progress bar الخطوات
+  document.querySelector('.steps').value = 100 - percentage;
 }
 </script>
 
