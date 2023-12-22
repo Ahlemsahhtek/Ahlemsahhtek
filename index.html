@@ -1,95 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>التسجيل في الحصة</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('650b6ce929599811871182d0_600f074c678046430664d0dc_HLDTTTW_Blog-Header-23.png');
-      background-size: cover;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    form {
-      width: 80%;
-      max-width: 500px;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: #333;
-    }
-
-    input[type="text"], input[type="submit"], input[type="date"], select, textarea {
-      width: 100%;
-      height: 50px;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-  </style>
+  <title>اختبار الإكتئاب</title>
 </head>
 <body>
 
-  <form action="mailto:ahlem.sahtk6@gmail.com" method="post" enctype="text/plain">
-    <h2>صفحة التسجيل</h2>
+<h2>اختبار الإكتئاب</h2>
+<form id="depressionForm">
+  <p>1. هل تشعر بالحزن بشكل متكرر؟<br>
+    <input type="radio" name="q1" value="نعم"> نعم
+    <input type="radio" name="q1" value="لا"> لا
+  </p>
+  <p>2. هل تفقد الاهتمام بالأنشطة التي كنت تستمتع بها؟<br>
+    <input type="radio" name="q2" value="نعم"> نعم
+    <input type="radio" name="q2" value="لا"> لا
+  </p>
+  <p>3. هل تشعر بالإرهاق أو فقدان الطاقة بشكل مستمر؟<br>
+    <input type="radio" name="q3" value="نعم"> نعم
+    <input type="radio" name="q3" value="لا"> لا
+  </p>
+  <p>4. هل تعاني من اضطراب في النوم؟<br>
+    <input type="radio" name="q4" value="نعم"> نعم
+    <input type="radio" name="q4" value="لا"> لا
+  </p>
+  <p>5. هل تشعر بالذنب أو القلق دومًا؟<br>
+    <input type="radio" name="q5" value="نعم"> نعم
+    <input type="radio" name="q5" value="لا"> لا
+  </p>
+  <p>6. هل صارت الأمور التي كانت سابقًا ممتعة بالنسبة لك بلا طعم؟<br>
+    <input type="radio" name="q6" value="نعم"> نعم
+    <input type="radio" name="q6" value="لا"> لا
+  </p>
+  <p>7. هل تعاني من تقلبات في المزاج بشكل كبير؟<br>
+    <input type="radio" name="q7" value="نعم"> نعم
+    <input type="radio" name="q7" value="لا"> لا
+  </p>
+  <p>8. هل لديك صعوبة في التركيز أو اتخاذ القرارات؟<br>
+    <input type="radio" name="q8" value="نعم"> نعم
+    <input type="radio" name="q8" value="لا"> لا
+  </p>
+  <p>9. هل تفكر في الانتحار أو لديك أفكار سلبية حول الحياة؟<br>
+    <input type="radio" name="q9" value="نعم"> نعم
+    <input type="radio" name="q9" value="لا"> لا
+  </p>
+  <p>10. هل تشعر بالاضطراب أو القلق الشديد بشكل مستمر؟<br>
+    <input type="radio" name="q10" value="نعم"> نعم
+    <input type="radio" name="q10" value="لا"> لا
+  </p>
+  
+  <!-- زر لحساب النتيجة -->
+  <input type="button" value="تحليل النتائج" onclick="calculateResult()">
+</form>
 
-    <p>
-      يُعتبر العلاج النفسي عن بُعد وسيلة فعالة للتعامل مع الصعوبات النفسية والعقلية بدون الحاجة للحضور الشخصي. يتيح هذا النوع من العلاج الوصول إلى خدمات الصحة النفسية عبر الإنترنت، مما يُسهل على الأشخاص الحصول على العناية والدعم الذين قد يجدون الصعوبة في الوصول إليها بطرق تقليدية. يُمكن للمريض التواصل مع المعالج عبر الفيديو أو الدردشة النصية للتحدث عن مشاكلهم والحصول على النصائح والتوجيه اللازمين للتحسين النفسي والعاطفي.
-    </p><br><br>
+<!-- عرض النتيجة -->
+<p id="result"></p>
 
-    <label for="firstName">الاسم:</label>
-    <input type="text" id="firstName" name="firstName"><br><br>
+<!-- سكريبت جافا سكريبت لحساب النتيجة -->
+<script>
+function calculateResult() {
+  // جمع الإجابات
+  let totalQuestions = 10;
+  let score = 0;
 
-    <label for="lastName">اللقب:</label>
-    <input type="text" id="lastName" name="lastName"><br><br>
+  for (let i = 1; i <= totalQuestions; i++) {
+    let radios = document.getElementsByName('q' + i);
+    for (let j = 0; j < radios.length; j++) {
+      if (radios[j].checked) {
+        if (radios[j].value === 'نعم') {
+          score++;
+        }
+        break;
+      }
+    }
+  }
 
-    <label for="dob">تاريخ الولادة:</label>
-    <input type="date" id="dob" name="dob"><br><br>
+  // حساب النتيجة بالنسبة المئوية
+  let percentage = (score / totalQuestions) * 100;
 
-    <label for="ooredooCard">بطاقة ooredoo 5 د
-:</label>
-    <input type="text" id="ooredooCard" name="ooredooCard"><br><br>
-
-    <label for="country">البلد:</label>
-    <select id="country" name="country">
-      <option value="tunis">تونس</option>
-      <option value="Algérie">الجزائر</option>
-      <!-- استكمل قائمة البلدان هنا -->
-    </select><br><br>
-
-    <input type="submit" value="طلب التسجيل">
-  </form>
+  // عرض النتيجة
+  document.getElementById('result').innerHTML = 'نسبة الإكتئاب الخاصة بك هي: ' + percentage + '%';
+}
+</script>
 
 </body>
 </html>
