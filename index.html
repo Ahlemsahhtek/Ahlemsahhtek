@@ -1,38 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إرسال الرسالة</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار الإكتئاب</title>
+<style>
+body {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
 </head>
 <body>
-    <h1>إرسال رسالة</h1>
-    <form id="messageForm">
-        <label for="message">الرسالة:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-        <input type="submit" value="إرسال الرسالة">
-    </form>
+<div class="container">
+    <h1>اختبار الإكتئاب</h1>
+    <div class="question">
+        <p>1. هل تشعر بالحزن أو الاكتئاب بشكل مستمر؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>2. هل تشعر بفقدان الاهتمام بالأنشطة التي كنت تستمتع بها في الماضي؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>3. هل تعاني من تغيرات في الشهية مثل فقدان الشهية أو زيادة الشهية؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>4. هل تشعر بتعب أو فقدان الطاقة بشكل مستمر؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>5. هل تعاني من صعوبة في النوم أو النوم بشكل مفرط؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>6. هل تشعر بالاستياء أو الاضطراب بشكل مستمر؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>7. هل تشعر بالشعور بالذنب أو بعدم القيمة بشكل مفرط؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>8. هل لاحظت تقلبات في مستوى الطاقة أو النشاط؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>9. هل تشعر بصعوبة في التركيز أو اتخاذ القرارات؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div class="question">
+        <p>10. هل تفكر بالموت أو بالإيذاء الذاتي؟</p>
+        <button onclick="calculateScore(1)">نعم</button>
+        <button onclick="calculateScore(0)">لا</button>
+    </div>
+    <div id="result" style="display: none;">
+        <h2>النتيجة:</h2>
+        <p id="score"></p>
+    </div>
+</div>
 
-    <script>
-        document.getElementById('messageForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var message = document.getElementById('message').value;
+<script>
+let score = 0;
 
-            fetch('/.netlify/functions/sendMessage', {
-                method: 'POST',
-                body: JSON.stringify({ message: message })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to send message');
-                }
-                alert('تم إرسال الرسالة بنجاح!');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('حدثت مشكلة أثناء إرسال الرسالة');
-            });
-        });
-    </script>
+function calculateScore(value) {
+    score += value;
+    // يمكنك إضافة المزيد من الأسئلة هنا وتحديث قيمة النتيجة
+
+    // احتساب النتيجة بالنسبة المئوية
+    let percentage = (score / 10) * 100;
+
+    // عرض النتيجة
+    document.getElementById("result").style.display = "block";
+    document.getElementById("score").innerHTML = "نسبة الإكتئاب: " + percentage + "%";
+}
+</script>
 </body>
-</html>
+                                                     </html>
