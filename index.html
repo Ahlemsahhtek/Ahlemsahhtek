@@ -1,82 +1,38 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اشتراك في حصص نفسية عن بعد</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid black;
-            border-radius: 10px;
-            background-color: white;
-        }
-        h1 {
-            color: black;
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: black;
-        }
-        input[type="text"], input[type="email"], input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            background-color: blue;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: darkblue;
-        }
-    </style>
+    <title>إرسال الرسالة</title>
 </head>
 <body>
-    <div class="container">
-        <h1>اشتراك في حصص نفسية عن بعد</h1>
-        <form id="subscriptionForm">
-            <label for="fname">الاسم:</label>
-            <input type="text" id="fname" name="firstname" required>
-            
-            <label for="lname">اللقب:</label>
-            <input type="text" id="lname" name="lastname" required>
-            
-            <label for="email">البريد الإلكتروني:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="age">العمر:</label>
-            <input type="text" id="age" name="age">
-            
-            <label for="phone">رقم الهاتف:</label>
-            <input type="tel" id="phone" name="phone">
-            
-            <input type="submit" value="إرسال" onclick="submitForm()">
-        </form>
-    </div>
+    <h1>إرسال رسالة</h1>
+    <form id="messageForm">
+        <label for="message">الرسالة:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="إرسال الرسالة">
+    </form>
 
     <script>
-        function submitForm() {
-            var formData = new FormData(document.getElementById("subscriptionForm"));
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://www.facebook.com/profile.php?id=100093411786244", true);
-            xhr.send(formData);
-            // You can add further handling here, like displaying a success message
-        }
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var message = document.getElementById('message').value;
+
+            fetch('/.netlify/functions/sendMessage', {
+                method: 'POST',
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send message');
+                }
+                alert('تم إرسال الرسالة بنجاح!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('حدثت مشكلة أثناء إرسال الرسالة');
+            });
+        });
     </script>
 </body>
 </html>
